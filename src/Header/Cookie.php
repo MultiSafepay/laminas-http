@@ -75,7 +75,8 @@ class Cookie extends ArrayObject implements HeaderInterface
         foreach ($nvPairs as $nvPair) {
             $parts = explode('=', $nvPair, 2);
             if (count($parts) !== 2) {
-                throw new Exception\RuntimeException('Malformed Cookie header found');
+                continue;
+                // throw new Exception\RuntimeException('Malformed Cookie header found');
             }
             [$name, $value]   = $parts;
             $arrayInfo[$name] = urldecode($value);
